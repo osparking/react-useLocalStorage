@@ -23,5 +23,5 @@ export const useLocalStorage = (key, initial) => {
     localStorage.removeItem(key);
   };
 
-  return [value, setValue, removeKey];
+  return {value, setValue, removeKey};
 };

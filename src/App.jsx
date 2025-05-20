@@ -6,7 +6,7 @@ import { useLocalStorage } from "./custom-hook";
 function App() {
   const data = { username: "admin", password: "1234", code: "" };
   const [loading, setLoading] = useState(false);
-  const [JWT_TOKEN, setValue, removeKey] = useLocalStorage("JWT_TOKEN", null);
+  const {value, setValue, removeKey} = useLocalStorage("JWT_TOKEN", null);
   const handleLogin = () => {
     login(data, setLoading, setValue);
   };
@@ -15,13 +15,13 @@ function App() {
     setValue(null);
   };
   const JWT_FORMATTED =
-    JWT_TOKEN?.substring(0, 21) + "....." + JWT_TOKEN?.substring(120);
+    value?.substring(0, 21) + "....." + value?.substring(120);
 
   return (
     <>
       <h1>맞춤 후크 - 로컬 스토리지 항목</h1>
       <div className="card">
-        <p>JWT_TOKEN: {JWT_TOKEN ? JWT_FORMATTED : '(undefined)'}</p>
+        <p>JWT_TOKEN: {value ? JWT_FORMATTED : '(undefined)'}</p>
         <button disabled={loading} onClick={handleLogin}>
           로그인
         </button>
