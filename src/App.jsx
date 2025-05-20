@@ -21,7 +21,7 @@ function App() {
     <>
       <h1>맞춤 후크 - 로컬 스토리지 항목</h1>
       <div className="card">
-        <p>JWT_TOKEN: {JWT_TOKEN ? JWT_FORMATTED : JWT_TOKEN}</p>
+        <p>JWT_TOKEN: {JWT_TOKEN ? JWT_FORMATTED : '(undefined)'}</p>
         <button disabled={loading} onClick={handleLogin}>
           로그인
         </button>
