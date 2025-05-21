@@ -1,27 +1,21 @@
 import { useEffect, useState } from "react";
 
-/**
- * Custom hook that saves item into the local storage
- * 
- * @param {*} key - local storage Item Key
- * @param {*} initial - local storage Item' initial value
- * @returns 
- */
-export const useLocalStorage = (key, initial) => {
+export const useLocalStorage = (key, init) => {
   const [value, setValue] = useState(() => {
     const savedValue = localStorage.getItem(key);
-    return savedValue ? savedValue : initial;
+    return savedValue ? savedValue : init;
   });
 
   useEffect(() => {
     if (value) {
       localStorage.setItem(key, value);
     }
-  }, [key, value]);
+  }, [value]);
 
-  const removeKey = () => {
+  function removeKey() {
     localStorage.removeItem(key);
-  };
+  }
 
   return {value, setValue, removeKey};
+
 };
